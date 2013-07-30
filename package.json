@@ -1,6 +1,6 @@
 {
   "name": "git-object",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Simple library to retrieve git objects from a repository.",
   "keywords": [
     "git",
