@@ -21,6 +21,7 @@ describe('fromPath()', function(){
     fromPath('.', 'master', 'index.js', function(err, object){
       if (err) return done(err);
       assert.ok(object instanceof fromPath.Blob);
+      assert.ok(object.isBlob() && !object.isTree());
       var sink = new Sink(object.show());
       sink.on('data', function(d){
         d.toString().should.equal([
@@ -35,6 +36,7 @@ describe('fromPath()', function(){
     fromPath('.', 'master', 'lib', function(err, object){
       if (err) return done(err);
       assert.ok(object instanceof fromPath.Tree);
+      assert.ok(object.isTree() && !object.isBlob());
       object.contents(function(err, contents){
         if (err) return done(err);
         contents.should.eql([
