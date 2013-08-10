@@ -40,7 +40,10 @@ describe('fromPath()', function(){
       object.contents(function(err, contents){
         if (err) return done(err);
         contents.should.eql([
-          'git-object.js'
+          'blob.js',
+          'git-object.js',
+          'object.js',
+          'tree.js'
         ]);
         done();
       });
