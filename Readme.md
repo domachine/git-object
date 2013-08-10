@@ -14,7 +14,7 @@
 
   git('.', 'master', 'index.js', function(err, object){
     if (err) return console.log(err);  // fail
-    if (object instanceof git.Blob) {
+    if (object.isBlob()) {
 
       // create read stream an use it
 
@@ -32,7 +32,7 @@
 
   git('.', 'master', 'lib/', function(err, object){
     if (err) return console.log(err);  // fail
-    if (object instanceof git.Tree) {
+    if (object.isTree()) {
       object.contents(function(err, contents){
         if (err) return done(err);
         contents.should.eql([
@@ -47,6 +47,23 @@
   ```
 
 ## API
+
+### fromPath(repo, branch, path)
+
+  Retrieves an `Object` by `repo` which is the path to the desired
+  repository, the `branch` and the `path` to the file within the repo.
+
+### Object
+
+  This is the class from which `Blob` and `Tree` inherit.
+
+#### .isTree()
+
+  Checks if this is a tree.
+
+#### .isBlob()
+
+  Checks if this is a blob.
 
 ### Blob
 
